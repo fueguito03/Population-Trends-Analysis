@@ -51,6 +51,7 @@ project-root/
 │
 ├─ README.md                  # Project overview and documentation
 └─ requirements.txt           # Required libraries
+```
 
 ## Exploratory Data Analysis (EDA)
 
