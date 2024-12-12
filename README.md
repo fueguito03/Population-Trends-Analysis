@@ -3,6 +3,11 @@
 
 This project aims to perform **data analysis**, **statistical interpretation**, and **visualization** on 10 years of demographic data (births, deaths, marriages, divorces, etc.) provided by Statistics Korea. Through this process, we seek to identify domestic population trends, social changes, and derive meaningful insights from the data.
 
+## Collaborators
+- **fueguito03**: Data preprocessing and project management
+- **Roh37Chef**: Exploratory Data Analysis
+- **rrrtyi**: Regression Analysis and visualization
+
 ## Main Objectives
 
 - **Data Preprocessing**: Transform the raw data into a more manageable format  
@@ -15,42 +20,38 @@ This project aims to perform **data analysis**, **statistical interpretation**, 
 - **Data Source**:  
   - Statistics Korea, "Vital Statistics Survey," 2023, 2024.12.11, Trends in the Number and Rates of Vital Events (Births, Deaths, Marriages, Divorces)  
   - Link: [KOSIS National Statistics Portal](https://kosis.kr/statHtml/statHtml.do?orgId=101&tblId=DT_1B8000F&conn_path=I2)
+  - https://for-my-wealthy-life.tistory.com/8 (For Regression Learning)
+  - https://giveme-happyending.tistory.com/168 (Korean font matplotlib)
 - **Data Overview**: 10 years of demographic data, including birth rates, death rates, marriage rates, and divorce rates  
 - **Data Format**: CSV files stored in the `data/` directory
 
 ## Technologies & Libraries
 
-- **Language**: Python 3.x  
+- **Language**: Python 3.12.1  
 - **Libraries**:
   - **NumPy**: Numerical computations and array operations  
   - **Pandas**: Dataframe-based data manipulation and exploration  
-  - **Matplotlib**: Data visualization  
-- **Environment**: Before running the project, install the required libraries listed in `requirements.txt`
+  - **Matplotlib**: Data visualization
+  - **Statsmodels**: Statistical modeling and regression analysis
 
 ## Directory Structure
 
 ```plaintext
 project-root/
-├─ data/                      # Original and preprocessed data files
-│  └─ population_data.csv     # Example: 10-year demographic data from Statistics Korea
+├─ data/                                  # Original and preprocessed data files
+│  ├─ population_trends_cleaned.csv       # Cleaned and processed dataset for analysis
+│  └─ 인구동태건수_및_동태율_추이_출생_사망_혼인_이혼__.xlsx  # Raw demographic data
 │
-├─ notebooks/                 # Jupyter Notebooks
-│  ├─ data_preprocessing.ipynb   # Data preprocessing
-│  ├─ eda.ipynb                  # Exploratory Data Analysis (EDA)
-│  ├─ modeling.ipynb             # Modeling and evaluation (if needed)
-│  └─ final_analysis.ipynb       # Final summary of analysis results
+├─ results/                               # Analysis results and visualizations
+│  ├─ Trends_in_Population_Dynamic.png    # Line chart showing population trends
+│  ├─ regression_analysis_results1.png   # Regression analysis result visualization 1
+│  └─ regression_analysis_results2.png   # Regression analysis result visualization 2
 │
-├─ src/                       # Python scripts
-│  ├─ preprocess.py           # Data preprocessing functions
-│  ├─ model.py                # Modeling functions (if needed)
-│  └─ evaluate.py             # Model evaluation functions (if needed)
-│
-├─ results/                   # Output files (visualizations, metrics, etc.)
-│  ├─ figures/                # Graphs and charts
-│  └─ metrics.txt             # Summary of statistical results and key indicators
-│
-├─ README.md                  # Project overview and documentation
-└─ requirements.txt           # Required libraries
+├─ data_processing.ipynb                  # Data preprocessing steps
+├─ eda.ipynb                              # Exploratory Data Analysis (EDA)
+├─ regression_analysis.ipynb              # Regression analysis and modeling
+└─ README.md                              # Project overview and documentation
+
 ```
 
 ## Exploratory Data Analysis (EDA)
@@ -101,19 +102,26 @@ Open the desired .ipynb file in your browser and execute the cells in order.
 
 Below are the results of the regression analysis conducted as part of this project. The analysis examines the relationship between various factors influencing population trends.
 
-#### Result 1
+#### Linear Regression Result
 ![Regression Analysis Result 1](https://github.com/fueguito03/Population-Trends-Analysis/blob/main/results/regression_analysis_results1.png)
 
-#### Result 2
+#### Linear Regression Visualisation
 ![Regression Analysis Result 2](https://github.com/fueguito03/Population-Trends-Analysis/blob/main/results/regression_analysis_results2.png)
 
-These charts illustrate the key outcomes and statistical relationships identified during the regression analysis. For further details, refer to the documentation or code files in this repository.
+### Model Summary
+- **Dependent Variable**: Birth counts
+- **Independent Variable**: Year
 
-## License
+### Key Results
+1. **R-squared**: 0.966 (96.6%)
+   - The model explains 96.6% of the variation in birth counts.
+2. **Regression Coefficients**:
+   - Intercept (const): 51,490,000
+   - Slope (Year): -25,350
+3. **Statistical Significance**:
+   - The p-value for the independent variable (Year) is < 0.001, indicating a statistically significant relationship.
 
-The project’s results and source code follow a separate licensing policy (specify if needed).
-
-## Contact
-
-For project-related inquiries, please use the GitHub Issues tab.
-
+### Interpretation
+- Birth counts have shown a decreasing trend over the years.
+- Each year, birth counts are predicted to decrease by approximately 25,350.
+- This trend highlights the ongoing issue of declining birth rates, which may be influenced by social and economic factors.
